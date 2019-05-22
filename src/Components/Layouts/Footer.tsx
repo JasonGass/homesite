@@ -1,5 +1,4 @@
-import React from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
@@ -13,7 +12,7 @@ const styles = {
 
 class Footer extends React.Component {
   state = {
-    value: 0
+    value: "todo"
   };
 
   handleChange = (event, value) => {
@@ -21,10 +20,8 @@ class Footer extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
-
     return (
-      <Paper className={classes.root}>
+      <Paper>
         <Tabs
           value={this.state.value}
           onChange={this.handleChange}
@@ -32,17 +29,13 @@ class Footer extends React.Component {
           textColor="primary"
           centered
         >
-          <Tab label="Item One" />
-          <Tab label="Item Two" />
-          <Tab label="Item Three" />
+          <Tab label="Todo" value="todo" />
+          <Tab label="Coming Up" value="coming-up" />
+          <Tab label="All" value="all" />
         </Tabs>
       </Paper>
     );
   }
 }
-
-Footer.propTypes = {
-  classes: PropTypes.object.isRequired
-};
 
 export default withStyles(styles)(Footer);

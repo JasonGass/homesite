@@ -5,23 +5,28 @@ import Button from "@material-ui/core/Button";
 import Header from "./Components/Layouts/Header";
 import SearchAppBar from "./Components/Layouts/AppBar";
 import Footer from "./Components/Layouts/Footer";
+import Panel from "./Components/Layouts/Panel";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import { projects } from "./store";
 
-function App() {
-  return (
-    <React.Fragment>
-      <CssBaseline />
-      <div className="App">
-        <SearchAppBar />
-        <Header name="JASON" />
-        <h2>Start editing to see some magic happen!</h2>
-        <Button variant="contained" color="primary">
-          Hello World
-        </Button>
-        <Footer />
-      </div>
-    </React.Fragment>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <React.Fragment>
+        <CssBaseline />
+        <div className="App">
+          <SearchAppBar />
+
+          <Panel
+            //         proj={projects.filter(project => (project.id = "stain-deck"))}
+            proj={projects}
+          />
+
+          <Footer />
+        </div>
+      </React.Fragment>
+    );
+  }
 }
 
 const rootElement = document.getElementById("root");
