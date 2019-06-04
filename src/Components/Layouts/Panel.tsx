@@ -1,7 +1,7 @@
 import * as React from "react";
 import Grid from "@material-ui/core/Grid";
-import { Card, CardContent } from "@material-ui/core";
 import project from "../../store";
+import ProjectCard from "./ProjectCard";
 
 interface PanelProps {
   proj: project[];
@@ -9,16 +9,22 @@ interface PanelProps {
 
 const Panel: React.FC<PanelProps> = (props: PanelProps) => {
   return (
-    <Grid container>
-      <Grid item>
-        <Card>
-          {props.proj.map(p => (
-            <Card>
-              <CardContent>{p.title}</CardContent>
-            </Card>
-          ))}
-        </Card>
-      </Grid>
+    <Grid
+      container
+      alignContent="center"
+      justify="center"
+      alignItems="center"
+      spacing={1}
+    >
+      {props.proj.map(p => (
+        <Grid item>
+          <ProjectCard
+            title={p.title}
+            img={p.img}
+            description={p.description}
+          />
+        </Grid>
+      ))}
     </Grid>
   );
 };
